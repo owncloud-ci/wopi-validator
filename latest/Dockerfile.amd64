@@ -13,7 +13,7 @@ WORKDIR /app/
 RUN dotnet build -c Release
 RUN find /app/src/WopiValidator/bin/Release
 
-FROM mcr.microsoft.com/dotnet/runtime:6.0-alpine
+FROM mcr.microsoft.com/dotnet/runtime:7.0-alpine@sha256:74e811fecf0a3334a94b724fc3fefa7c97e91dfbc69911baa16f8f0cd917bf8b
 
 LABEL maintainer="ownCloud GmbH <devops@owncloud.com>"
 LABEL org.opencontainers.image.authors="ownCloud DevOps <devops@owncloud.com>"

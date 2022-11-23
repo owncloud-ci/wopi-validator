@@ -5,8 +5,6 @@ def main(ctx):
 
   arches = [
     'amd64',
-    'arm32v7',
-    'arm64v8',
   ]
 
   config = {
@@ -14,7 +12,7 @@ def main(ctx):
     'arch': None,
     'trigger': [],
     'repo': ctx.repo.name,
-    'description': 'Alpine for ownCloud CI',
+    'description': 'wopi-validator for ownCloud CI',
   }
 
   stages = []

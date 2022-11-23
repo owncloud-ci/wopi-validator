@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine as build
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine@sha256:206e5e725e035358ad40dc23461b048948d0b5c020940d5b54949921ebb2fe53 as build
 
 # TODO: check how to do this
 # renovate: datasource=git-refs depName=https://github.com/microsoft/wopi-validator-core
@@ -13,7 +13,7 @@ WORKDIR /app/
 RUN dotnet build -c Release
 RUN find /app/src/WopiValidator/bin/Release
 
-FROM mcr.microsoft.com/dotnet/runtime:6.0-alpine
+FROM mcr.microsoft.com/dotnet/runtime:6.0-alpine@sha256:53f647e1a7a6f4accb7922657e8ab4dd42d0c6e2acbef3f1928153cffd0a5d92
 
 LABEL maintainer="ownCloud GmbH <devops@owncloud.com>"
 LABEL org.opencontainers.image.authors="ownCloud DevOps <devops@owncloud.com>"

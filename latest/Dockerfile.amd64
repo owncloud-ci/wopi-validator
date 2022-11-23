@@ -1,0 +1,29 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine as build
+
+# TODO: check how to do this
+# renovate: datasource=git-refs depName=https://github.com/microsoft/wopi-validator-core
+ENV WOPI_VALIDATOR="4c995a0d8c32ed5f55cac1dd3209d2450e12725c"
+
+WORKDIR /
+ADD https://github.com/microsoft/wopi-validator-core/archive/$WOPI_VALIDATOR.tar.gz /wopi-validator-core.tar.gz
+RUN tar xvfz wopi-validator-core.tar.gz --directory /
+RUN mv /wopi-validator-core-$WOPI_VALIDATOR /app
+
+WORKDIR /app/
+RUN dotnet build -c Release
+RUN find /app/src/WopiValidator/bin/Release
+
+FROM mcr.microsoft.com/dotnet/runtime:6.0-alpine
+
+LABEL maintainer="ownCloud GmbH <devops@owncloud.com>"
+LABEL org.opencontainers.image.authors="ownCloud DevOps <devops@owncloud.com>"
+LABEL org.opencontainers.image.title="ownCloud CI wopi-validator"
+LABEL org.opencontainers.image.url="https://hub.docker.com/r/owncloudci/wopi-validator"
+LABEL org.opencontainers.image.source="https://github.com/owncloud-ci/wopi-validator"
+LABEL org.opencontainers.image.documentation="https://github.com/owncloud-ci/wopi-validator"
+
+WORKDIR /app/
+COPY --from=build /app/LICENSE /app/LICENSE
+COPY --from=build /app/src/WopiValidator/bin/Release/net6.0 /app
+
+ENTRYPOINT [ "/app/Microsoft.Office.WopiValidator"]

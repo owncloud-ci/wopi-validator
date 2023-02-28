@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine@sha256:246295e97b7e11ea713d7436a69b0a2a4102c317da730eefc87e6fb047a0bf7d as build
+FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine@sha256:0d7b6221bf1bd839432a991863956681761ac7a9c9dc78b4523ee3cef24ca6ab as build
 
 # renovate: depName=https://github.com/microsoft/wopi-validator-core depBranch=main
 ENV WOPI_VALIDATOR_VERSION="${WOPI_VALIDATOR_VERSION:-4c995a0d8c32ed5f55cac1dd3209d2450e12725c}"

@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine@sha256:0951e1b2a5dd42ddb157446b25b318d2acfb21aa246c84af51d2dc7af77f6b73 as build
 
 # renovate: depName=https://github.com/microsoft/wopi-validator-core depBranch=main
-ENV WOPI_VALIDATOR_VERSION="${WOPI_VALIDATOR_VERSION:-4c995a0d8c32ed5f55cac1dd3209d2450e12725c}"
+ENV WOPI_VALIDATOR_VERSION="${WOPI_VALIDATOR_VERSION:-afe0e5fa1ef2e43f76265166e63c4b35eb391892}"
 
 WORKDIR /
 ADD https://github.com/microsoft/wopi-validator-core/archive/$WOPI_VALIDATOR_VERSION.tar.gz /wopi-validator-core.tar.gz

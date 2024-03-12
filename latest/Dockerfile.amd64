@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine@sha256:0951e1b2a5dd42ddb157446b25b318d2acfb21aa246c84af51d2dc7af77f6b73 as build
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine@sha256:1b84f59aae0560125713a8805a6afb2f84097e279b6aa246c3005daeb0d773cc as build
 
 # renovate: depName=https://github.com/microsoft/wopi-validator-core depBranch=main
 ENV WOPI_VALIDATOR_VERSION="${WOPI_VALIDATOR_VERSION:-4c995a0d8c32ed5f55cac1dd3209d2450e12725c}"
@@ -12,7 +12,7 @@ WORKDIR /app/
 RUN dotnet build -c Release
 RUN find /app/src/WopiValidator/bin/Release
 
-FROM mcr.microsoft.com/dotnet/runtime:6.0-alpine@sha256:488b0c13258f87114b1a133ad2a779ad55044ec96430dc366bf25f5db165d93c
+FROM mcr.microsoft.com/dotnet/runtime:6.0-alpine@sha256:f971a195d9a159980f90442a9086efc51fe2c127e1ff331ace01e523a9875c33
 
 LABEL maintainer="ownCloud GmbH <devops@owncloud.com>"
 LABEL org.opencontainers.image.authors="ownCloud DevOps <devops@owncloud.com>"
